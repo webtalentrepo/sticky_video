@@ -8,6 +8,7 @@
 		originalOuterWidth = 0,
 		originalOuterHeight = 0,
 		cornerVideoFinalHeight = 100;
+	window.cornerVideo.params["video-position"] = 'right';
 	
 	function getDomVideo() {
 		var videoWapper = document.querySelector(".video_wrapper.widescreen");
@@ -118,6 +119,17 @@
 				if (window.cornerVideo.params["transition-type"] === 'fade') {
 					DOM_video.style.setProperty('opacity', '1');
 				}
+				switch (window.cornerVideo.params["video-position"]) {
+					case 'top':
+					case 'right':
+					case 'bottom':
+					case 'left':
+						DOM_video.style.setProperty('top', '0px');
+						DOM_video.style.setProperty('left', '0px');
+						DOM_video.style.setProperty('right', 'auto');
+						DOM_video.style.setProperty('bottom', 'auto');
+						break;
+				}
 				if ((window.scrollY || window.pageYOffset) === 0) {
 					DOM_video.style.border = 0;
 					DOM_video.style['box-shadow'] = 'none';
@@ -134,6 +146,32 @@
 								DOM_video.style.setProperty('opacity', '1');
 							}, window.cornerVideo.params["transition-duration"]);
 						}
+						switch (window.cornerVideo.params["video-position"]) {
+							case 'top':
+								DOM_video.style.setProperty('top', '20px', 'important');
+								DOM_video.style.setProperty('right', 'auto', 'important');
+								DOM_video.style.setProperty('bottom', 'auto', 'important');
+								DOM_video.style.setProperty('left', Math.round((document.body.offsetWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+								break;
+							case 'bottom':
+								DOM_video.style.setProperty('top', 'auto');
+								DOM_video.style.setProperty('right', 'auto');
+								DOM_video.style.setProperty('bottom', '20px', 'important');
+								DOM_video.style.setProperty('left', Math.round((document.body.offsetWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+								break;
+							case 'right':
+								DOM_video.style.setProperty('top', Math.round((window.screen.availHeight / 2) - (cornerVideoFinalHeight / 1.2)) + 'px', 'important');
+								DOM_video.style.setProperty('right', '20px', 'important');
+								DOM_video.style.setProperty('bottom', 'auto');
+								DOM_video.style.setProperty('left', 'auto');
+								break;
+							case 'left':
+								DOM_video.style.setProperty('top', Math.round((window.screen.availHeight / 2) - (cornerVideoFinalHeight / 1.2)) + 'px', 'important');
+								DOM_video.style.setProperty('right', 'auto');
+								DOM_video.style.setProperty('bottom', 'auto');
+								DOM_video.style.setProperty('left', '20px', 'important');
+								break;
+						}
 					} else {
 						DOM_video.style.border = 0;
 						DOM_video.style['box-shadow'] = 'none';
@@ -145,9 +183,12 @@
 	
 	window.addEventListener('resize', fn_checkStickynessOnResize);
 	
-	window.addEventListener('scroll', function (ev) {
-		setVideoStyle();
-	});
+	var _wait3;
+	var fn_checkStickynessOnScroll = function () {
+		clearTimeout(_wait3);
+		_wait3 = setTimeout(setVideoStyle, 200);
+	};
+	window.addEventListener('scroll', fn_checkStickynessOnScroll);
 	
 	function reSetZIndex(el, tl, e_tl) {
 		if (tl.tagName === "BODY") {
