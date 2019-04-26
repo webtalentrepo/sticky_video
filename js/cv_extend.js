@@ -1,0 +1,1 @@
+!function(){window.onload=function(){var e=document.querySelector(".video_wrapper.widescreen");e&&null!=e&&("BODY"!==e.parentNode.tagName?function e(t,n,o){"BODY"===n.tagName?t.style.setProperty("z-index","999999","important"):e(o,n.parentNode,o.parentNode)}(e,e.parentNode.parentNode,e.parentNode):e.style.setProperty("z-index","999999","important"))}}();
