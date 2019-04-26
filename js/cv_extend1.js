@@ -3,7 +3,12 @@
 	var currentWindowWidth = document.documentElement.clientWidth,
 		currentWindowHeight = document.documentElement.clientHeight,
 		isMobileMQ = (currentWindowWidth <= window.cornerVideo.params['mobile-breakpoint']),
-		cornerVideoFinalWidth = window.cornerVideo.params['video-width' + (isMobileMQ?'-mobile':'')];
+		cornerVideoFinalWidth = window.cornerVideo.params['video-width' + (isMobileMQ ? '-mobile' : '')],
+		videoComputedStyle = null,
+		originalOuterWidth = 0,
+		originalOuterHeight = 0,
+		cornerVideoFinalHeight = 100;
+	
 	function getDomVideo() {
 		var videoWapper = document.querySelector(".video_wrapper.widescreen");
 		if (videoWapper && videoWapper !== null) {
@@ -16,6 +21,26 @@
 			}
 		}
 	}
+	
+	var _onWindowResize = function () {
+		currentWindowWidth = document.documentElement.clientWidth;
+		currentWindowHeight = document.documentElement.clientHeight;
+		isMobileMQ = (currentWindowWidth <= window.cornerVideo.params['mobile-breakpoint']);
+		cornerVideoFinalWidth = window.cornerVideo.params['video-width' + (isMobileMQ ? '-mobile' : '')];
+		getDomVideo();
+		if (DOM_video !== null) {
+			videoComputedStyle = window.getComputedStyle(DOM_video);
+			originalOuterWidth = parseInt(videoComputedStyle.getPropertyValue('width'));
+			originalOuterHeight = parseInt(videoComputedStyle.getPropertyValue('height'));
+			cornerVideoFinalHeight = (cornerVideoFinalWidth / originalOuterWidth) * originalOuterHeight;
+		}
+	};
+	
+	var _wait2;
+	var fn_checkStickynessOnResize = function () {
+		clearTimeout(_wait2);
+		_wait2 = setTimeout(_onWindowResize, 100);
+	};
 	
 	window.onload = function () {
 		if (!window.cornerVideo.params["transition-type"] || window.cornerVideo.params["transition-type"] === undefined) {
@@ -33,11 +58,13 @@
 			}
 			getDomVideo();
 			if (DOM_video !== null) {
+				fn_checkStickynessOnResize();
 				switch (window.cornerVideo.params["transition-type"]) {
 					case 'motion':
 					case 'slidein':
-						// window.cornerVideo.params["video-position"] = 'top-right';
 						switch (window.cornerVideo.params["video-position"]) {
+							case 'top':
+							case 'left':
 							case 'top-left':
 								DOM_video.style.setProperty('transition-property', 'opacity, transform, top, left');
 								break;
@@ -45,6 +72,7 @@
 								DOM_video.style.setProperty('bottom', window.screen.availHeight / 2 + 'px');
 								DOM_video.style.setProperty('transition-property', 'opacity, transform, bottom, left');
 								break;
+							case 'right':
 							case 'top-right':
 							case 'bottom-right':
 								DOM_video.style.setProperty('bottom', window.screen.availHeight / 2 + 'px');
@@ -78,6 +106,11 @@
 			var childNode = videoWapper.childNodes;
 			getDomVideo();
 			if (DOM_video !== null) {
+				videoComputedStyle = window.getComputedStyle(DOM_video);
+				originalOuterWidth = parseInt(videoComputedStyle.getPropertyValue('width'));
+				originalOuterHeight = parseInt(videoComputedStyle.getPropertyValue('height'));
+				cornerVideoFinalHeight = (cornerVideoFinalWidth / originalOuterWidth) * originalOuterHeight;
+				
 				var topOffsetTrigger = videoWapper.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
 				if (window.cornerVideo.params["transition-type"] === 'scale') {
 					DOM_video.style.setProperty('transition-property', 'opacity, transform');
@@ -109,6 +142,8 @@
 			}
 		}
 	}
+	
+	window.addEventListener('resize', fn_checkStickynessOnResize);
 	
 	window.addEventListener('scroll', function (ev) {
 		setVideoStyle();
