@@ -15,8 +15,22 @@
 		originalStyleAttr = '',
 		clickedClose = false;
 	window.cornerVideo.params['enable-close-btn'] = true;
-	
-	// window.cornerVideo.params['video-position'] = 'bottom';
+	if (window.cornerVideo.params['enable-cta'] === undefined) {
+		window.cornerVideo.params['enable-cta'] = false;//true
+		window.cornerVideo.params['cta-color'] = '#000000';
+		window.cornerVideo.params['cta-text-color'] = '#000000';
+		window.cornerVideo.params['cta-border-radius'] = 6;
+		window.cornerVideo.params['cta-border-width'] = 0;
+		window.cornerVideo.params['cta-border-line'] = 'solid';
+		window.cornerVideo.params['cta-border-color'] = 'black';
+		window.cornerVideo.params['cta-box-shadow-x'] = 0;
+		window.cornerVideo.params['cta-box-shadow-y'] = 0;
+		window.cornerVideo.params['cta-box-shadow-blur'] = 16;
+		window.cornerVideo.params['cta-box-shadow-color'] = '#000088';
+		window.cornerVideo.params['cta-text'] = 'But Now';
+		window.cornerVideo.params['cta-url'] = 'https://destinationlink.com';
+		window.cornerVideo.params['cta-target'] = 'none';//new-window
+	}
 	
 	function getDomVideo() {
 		var videoWapper = document.querySelector(".video_wrapper.widescreen");
