@@ -16,9 +16,10 @@
 		clickedClose = false;
 	window.cornerVideo.params['enable-close-btn'] = true;
 	if (window.cornerVideo.params['enable-cta'] === undefined) {
-		window.cornerVideo.params['enable-cta'] = false;//true
+		// window.cornerVideo.params['enable-cta'] = false;//true
+		window.cornerVideo.params['enable-cta'] = true;//true
 		window.cornerVideo.params['cta-color'] = '#000000';
-		window.cornerVideo.params['cta-text-color'] = '#000000';
+		window.cornerVideo.params['cta-text-color'] = '#ffffff';
 		window.cornerVideo.params['cta-border-radius'] = 6;
 		window.cornerVideo.params['cta-border-width'] = 0;
 		window.cornerVideo.params['cta-border-line'] = 'solid';
@@ -27,9 +28,9 @@
 		window.cornerVideo.params['cta-box-shadow-y'] = 0;
 		window.cornerVideo.params['cta-box-shadow-blur'] = 16;
 		window.cornerVideo.params['cta-box-shadow-color'] = '#000088';
-		window.cornerVideo.params['cta-text'] = 'But Now';
-		window.cornerVideo.params['cta-url'] = 'https://destinationlink.com';
-		window.cornerVideo.params['cta-target'] = 'none';//new-window
+		window.cornerVideo.params['cta-text'] = 'Buy Now';
+		window.cornerVideo.params['cta-url'] = 'https://clickperfect.com';
+		window.cornerVideo.params['cta-target'] = 'new-window';//none
 	}
 	
 	function getDomVideo() {
@@ -74,6 +75,38 @@
 		return closeBtn;
 	};
 	
+	var _initCTAButton = function () {
+		var ctaButton = document.createElement('button');
+		ctaButton.setAttribute('id', 'sticky_cta__btn');
+		ctaButton.style.setProperty('min-width', '100px');
+		ctaButton.style.setProperty('max-width', (cornerVideoFinalWidth - 40) + 'px');
+		ctaButton.style.setProperty('height', '30px');
+		ctaButton.style.setProperty('position', 'absolute');
+		ctaButton.style.setProperty('z-index', '999999');
+		ctaButton.style.setProperty('top', '-30px');
+		ctaButton.style.setProperty('left', '0');
+		ctaButton.style.setProperty('bottom', 'auto');
+		ctaButton.style.setProperty('right', 'auto');
+		ctaButton.style.setProperty('opacity', '0');
+		ctaButton.style.setProperty('font-size', '30px');
+		ctaButton.style.setProperty('padding', '0');
+		ctaButton.style.setProperty('margin', '0');
+		ctaButton.style.setProperty('line-height', '30px');
+		ctaButton.style.setProperty('will-change', 'opacity, transform, position');
+		ctaButton.innerHTML = window.cornerVideo.params['cta-text'];
+		ctaButton.style.setProperty('background-color', window.cornerVideo.params['cta-color']);
+		ctaButton.style.setProperty('color', window.cornerVideo.params['cta-text-color']);
+		ctaButton.style.setProperty('border',
+			window.cornerVideo.params['cta-border-width'] + 'px ' + window.cornerVideo.params['cta-border-line'] + ' ' + window.cornerVideo.params['cta-border-color']);
+		ctaButton.style.setProperty('box-shadow',
+			window.cornerVideo.params['cta-box-shadow-x'] + ', ' + window.cornerVideo.params['cta-box-shadow-y'] + ', ' + window.cornerVideo.params['cta-box-shadow-blur'] + ', ' + window.cornerVideo.params['cta-box-shadow-color']);
+		ctaButton.addEventListener('click', function () {
+			window.open(window.cornerVideo.params['cta-url'], window.cornerVideo.params['cta-target'] === 'none' ? '_self' : '_blank');
+		});
+		
+		return ctaButton;
+	};
+	
 	var _onWindowResize = function () {
 		currentWindowWidth = document.documentElement.clientWidth;
 		currentWindowHeight = document.documentElement.clientHeight;
@@ -107,6 +140,7 @@
 		if (videoWapper && videoWapper !== null) {
 			// Close button created
 			videoWapper.appendChild(_initCloseButton());
+			videoWapper.appendChild(_initCTAButton());
 			
 			if (videoWapper.parentNode.tagName !== "BODY") {
 				reSetZIndex(videoWapper, videoWapper.parentNode.parentNode, videoWapper.parentNode);
@@ -166,10 +200,12 @@
 		if (videoWapper && videoWapper !== null) {
 			var childNode = videoWapper.childNodes;
 			var closeBtn = document.querySelector('#sticky_close__btn');
+			var _ctaBtn = document.querySelector('#sticky_cta__btn');
 			getDomVideo();
 			if (DOM_video !== null) {
 				if (clickedClose) {
 					if (closeBtn) closeBtn.style.setProperty('opacity', '0');
+					if (_ctaBtn) _ctaBtn.style.setProperty('opacity', '0');
 					DOM_video.setAttribute('style', originalStyleAttr);
 					DOM_video.setAttribute('width', originalWidthAttr);
 					DOM_video.setAttribute('height', originalHeightAttr);
@@ -204,6 +240,10 @@
 					if (window.cornerVideo.params['enable-close-btn'] && closeBtn) {
 						closeBtn.style.setProperty('opacity', '0');
 						closeBtn.style.setProperty('position', 'absolute');
+					}
+					if (window.cornerVideo.params['enable-cta'] && _ctaBtn) {
+						_ctaBtn.style.setProperty('opacity', '0');
+						_ctaBtn.style.setProperty('position', 'absolute');
 					}
 				} else {
 					if ((window.scrollY || window.pageYOffset) > topOffsetTrigger && topOffsetTrigger !== 0) {
@@ -285,12 +325,55 @@
 								}
 							}
 						}
+						if (window.cornerVideo.params['enable-cta'] && _ctaBtn) {
+							_ctaBtn.style.setProperty('opacity', '1', 'important');
+							_ctaBtn.style.setProperty('position', 'fixed', 'important');
+							if (window.cornerVideo.params['video-position'].indexOf('top') > -1) {
+								_ctaBtn.style.setProperty('top', cornerVideoFinalHeight + cornerVideoVerticalOffset + 1 + 'px', 'important');
+								_ctaBtn.style.setProperty('bottom', 'auto', 'important');
+								if (window.cornerVideo.params['video-position'].indexOf('-left') > -1) {
+									_ctaBtn.style.setProperty('left',
+										(window.cornerVideo.params['enable-close-btn'] && closeBtn) ? (cornerVideoSideOffset + 40 + 'px') : cornerVideoSideOffset + 'px', 'important');
+									_ctaBtn.style.setProperty('right', 'auto', 'important');
+								} else {
+									_ctaBtn.style.setProperty('left', 'auto', 'important');
+									_ctaBtn.style.setProperty('right',
+										(window.cornerVideo.params['enable-close-btn'] && closeBtn) ? (cornerVideoSideOffset + 40 + 'px') : cornerVideoSideOffset + 'px', 'important');
+								}
+								if (window.cornerVideo.params['video-position'] === 'top') {
+									_ctaBtn.style.setProperty('left',
+										Math.round((document.body.offsetWidth - cornerVideoFinalWidth) / 2) + cornerVideoFinalWidth - 40 - ((window.cornerVideo.params['enable-close-btn'] && closeBtn) ? 40 : 40) + 'px', 'important');
+									_ctaBtn.style.setProperty('right', 'auto', 'important');
+								}
+							} else {
+								_ctaBtn.style.setProperty('top', 'auto', 'important');
+								_ctaBtn.style.setProperty('bottom', cornerVideoFinalHeight + cornerVideoVerticalOffset + 1 + 'px', 'important');
+								if (window.cornerVideo.params['video-position'].indexOf('left') > -1) {
+									_ctaBtn.style.setProperty('left',
+										(window.cornerVideo.params['enable-close-btn'] && closeBtn) ? (cornerVideoSideOffset + 40) + 'px' : cornerVideoSideOffset + 'px', 'important');
+									_ctaBtn.style.setProperty('right', 'auto', 'important');
+								} else {
+									_ctaBtn.style.setProperty('left', 'auto', 'important');
+									_ctaBtn.style.setProperty('right',
+										(window.cornerVideo.params['enable-close-btn'] && closeBtn) ? (cornerVideoSideOffset + 40) + 'px' : cornerVideoSideOffset + 'px', 'important');
+								}
+								if (window.cornerVideo.params['video-position'] === 'bottom') {
+									_ctaBtn.style.setProperty('left',
+										Math.round((document.body.offsetWidth - cornerVideoFinalWidth) / 2) + cornerVideoFinalWidth - 40 - ((window.cornerVideo.params['enable-close-btn'] && closeBtn) ? 40 : 40) + 'px', 'important');
+									_ctaBtn.style.setProperty('right', 'auto', 'important');
+								}
+							}
+						}
 					} else {
 						DOM_video.style.border = 0;
 						DOM_video.style['box-shadow'] = 'none';
 						if (window.cornerVideo.params['enable-close-btn'] && closeBtn) {
 							closeBtn.style.setProperty('opacity', '0');
 							closeBtn.style.setProperty('position', 'absolute');
+						}
+						if (window.cornerVideo.params['enable-cta'] && _ctaBtn) {
+							_ctaBtn.style.setProperty('opacity', '0');
+							_ctaBtn.style.setProperty('position', 'absolute');
 						}
 					}
 				}
