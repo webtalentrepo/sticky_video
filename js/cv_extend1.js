@@ -14,10 +14,10 @@
 		originalHeightAttr = '',
 		originalStyleAttr = '',
 		clickedClose = false;
-	window.cornerVideo.params['enable-close-btn'] = true;
+	// window.cornerVideo.params['enable-close-btn'] = true;
 	if (window.cornerVideo.params['enable-cta'] === undefined) {
-		// window.cornerVideo.params['enable-cta'] = false;//true
-		window.cornerVideo.params['enable-cta'] = true;//true
+		window.cornerVideo.params['enable-cta'] = false;//true
+		// window.cornerVideo.params['enable-cta'] = true;//true
 		window.cornerVideo.params['cta-color'] = '#000000';
 		window.cornerVideo.params['cta-text-color'] = '#ffffff';
 		window.cornerVideo.params['cta-border-radius'] = 6;
