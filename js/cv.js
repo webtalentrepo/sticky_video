@@ -219,11 +219,11 @@ window.cornerVideo = window.cornerVideo || {};
         // --------- On window resize --------- //
 
         currentWindowWidth = document.documentElement.clientWidth;
-        currentWindowHeight = document.documentElement.clientHeight;
+        currentWindowHeight = window.screen.availHeight || document.documentElement.clientHeight;
         isMobileMQ = (currentWindowWidth <= window.cornerVideo.params['mobile-breakpoint']);
         var _onWindowResize = function(){
             currentWindowWidth = document.documentElement.clientWidth;
-            currentWindowHeight = document.documentElement.clientHeight;
+            currentWindowHeight = window.screen.availHeight || document.documentElement.clientHeight;
             isMobileMQ = (currentWindowWidth <= window.cornerVideo.params['mobile-breakpoint']);
             checkStickyness();
         };
@@ -370,6 +370,11 @@ window.cornerVideo = window.cornerVideo || {};
             if(isVideoSticky) resetStickyness();
             return;
         }
+        
+        if (window.localStorage.getItem('clickedClose') === 'true') {
+	        if(isVideoSticky) resetStickyness();
+        	return;
+        }
 
         topOffsetTrigger = (isVideoSticky ? DOM_placeholder : DOM_video).getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
 
@@ -443,28 +448,69 @@ window.cornerVideo = window.cornerVideo || {};
         DOM_video.removeAttribute('height');
 
         if( playerHandler ) playerHandler.preFinalPositioning();
-
-        DOM_video.style.setProperty('position', 'fixed', 'important');
+        if (window.cornerVideo.params["transition-type"] === 'fade' || window.cornerVideo.params["transition-type"] === 'fadein') {
+            DOM_video.style.setProperty('opacity', '0');
+        }
         DOM_video.style.setProperty('margin', '0', 'important');
-
+        //
         DOM_video.style.setProperty('width', cornerVideoFinalWidth + 'px', 'important');
         DOM_video.style.setProperty('height', cornerVideoFinalHeight + 'px', 'important');
-        DOM_video.style.setProperty(
-            window.cornerVideo.params['video-position'].indexOf('top-') !== -1 ? 'top' : 'bottom',
-            cornerVideoVerticalOffset + 'px', 'important'
-        );
-        DOM_video.style.setProperty(
-            window.cornerVideo.params['video-position'].indexOf('top-') !== -1 ? 'bottom' : 'top',
-            'auto', 'important'
-        );
-        DOM_video.style.setProperty(
-            window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ? 'left' : 'right',
-            cornerVideoSideOffset + 'px', 'important'
-        );
-        DOM_video.style.setProperty(
-            window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ? 'right' : 'left',
-            'auto', 'important'
-        );
+        // console.log(window.cornerVideo.params['video-position']);
+        //reset dom video position
+        switch (window.cornerVideo.params["video-position"]) {
+            case 'top':
+                DOM_video.style.setProperty('top', cornerVideoVerticalOffset + 'px', 'important');
+                DOM_video.style.setProperty('right', 'auto', 'important');
+                DOM_video.style.setProperty('bottom', 'auto', 'important');
+                DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+                break;
+            case 'bottom':
+                DOM_video.style.setProperty('top', 'auto');
+                DOM_video.style.setProperty('right', 'auto');
+                DOM_video.style.setProperty('bottom', cornerVideoVerticalOffset + 'px', 'important');
+                DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+                break;
+            case 'right':
+                DOM_video.style.setProperty('top', Math.round((currentWindowHeight / 2) - cornerVideoFinalHeight) + 'px', 'important');
+                DOM_video.style.setProperty('right', cornerVideoSideOffset + 'px', 'important');
+                DOM_video.style.setProperty('bottom', 'auto');
+                DOM_video.style.setProperty('left', 'auto');
+                break;
+            case 'left':
+                DOM_video.style.setProperty('top', Math.round((currentWindowHeight / 2) - cornerVideoFinalHeight) + 'px', 'important');
+                DOM_video.style.setProperty('right', 'auto');
+                DOM_video.style.setProperty('bottom', 'auto');
+                DOM_video.style.setProperty('left', cornerVideoSideOffset + 'px', 'important');
+                break;
+            case 'top-left':
+            case 'top-right':
+                DOM_video.style.setProperty('top', cornerVideoVerticalOffset + 'px', 'important');
+                DOM_video.style.setProperty('bottom', 'auto');
+                DOM_video.style.setProperty(
+                    window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ? 'left' : 'right',
+                    cornerVideoSideOffset + 'px', 'important'
+                );
+                DOM_video.style.setProperty(
+                    window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ? 'right' : 'left',
+                    'auto', 'important'
+                );
+                break;
+            case 'bottom-left':
+            case 'bottom-right':
+                DOM_video.style.setProperty('bottom', cornerVideoVerticalOffset + 'px', 'important');
+                DOM_video.style.setProperty('top', 'auto');
+                DOM_video.style.setProperty(
+                    window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ? 'left' : 'right',
+                    cornerVideoSideOffset + 'px', 'important'
+                );
+                DOM_video.style.setProperty(
+                    window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ? 'right' : 'left',
+                    'auto', 'important'
+                );
+                break;
+        }
+    
+        DOM_video.style.setProperty('position', 'fixed', 'important');
 
         // --------- Apply placeholder --------- //
         // Note: Some videos might be in position:absolute, for example some outer container might force a fixed aspect ratio via padding-bottom; in this case the placeholder is not needed.
