@@ -39,7 +39,7 @@ window.cornerVideo.params = {
 	"cta-font-size": 24,
 	"cta-padding": 16,
 	"cta-margin": 0,
-	"cta-font": "Georgia",
+	"cta-font": "Just Another Hand",
 	"cta-color2": "#0398d3",
 	"cta-target": "new-window"
 };
