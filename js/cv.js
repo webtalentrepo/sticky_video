@@ -219,11 +219,11 @@ window.cornerVideo = window.cornerVideo || {};
         // --------- On window resize --------- //
 
         currentWindowWidth = document.documentElement.clientWidth;
-        currentWindowHeight = window.screen.availHeight || document.documentElement.clientHeight;
+        currentWindowHeight = window.innerHeight || document.documentElement.clientHeight;
         isMobileMQ = (currentWindowWidth <= window.cornerVideo.params['mobile-breakpoint']);
         var _onWindowResize = function(){
             currentWindowWidth = document.documentElement.clientWidth;
-            currentWindowHeight = window.screen.availHeight || document.documentElement.clientHeight;
+            currentWindowHeight = window.innerHeight || document.documentElement.clientHeight;
             isMobileMQ = (currentWindowWidth <= window.cornerVideo.params['mobile-breakpoint']);
             checkStickyness();
         };
@@ -471,16 +471,22 @@ window.cornerVideo = window.cornerVideo || {};
                 DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
                 break;
             case 'right':
-                DOM_video.style.setProperty('top', Math.round((currentWindowHeight / 2) - cornerVideoFinalHeight) + 'px', 'important');
+                DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight) / 2) - 20 + 'px', 'important');
                 DOM_video.style.setProperty('right', cornerVideoSideOffset + 'px', 'important');
                 DOM_video.style.setProperty('bottom', 'auto');
                 DOM_video.style.setProperty('left', 'auto');
                 break;
             case 'left':
-                DOM_video.style.setProperty('top', Math.round((currentWindowHeight / 2) - cornerVideoFinalHeight) + 'px', 'important');
+                DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight) / 2) - 20 + 'px', 'important');
                 DOM_video.style.setProperty('right', 'auto');
                 DOM_video.style.setProperty('bottom', 'auto');
                 DOM_video.style.setProperty('left', cornerVideoSideOffset + 'px', 'important');
+                break;
+            case 'middle':
+                DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight) / 2) - 20 + 'px', 'important');
+                DOM_video.style.setProperty('right', 'auto');
+                DOM_video.style.setProperty('bottom', 'auto');
+                DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
                 break;
             case 'top-left':
             case 'top-right':

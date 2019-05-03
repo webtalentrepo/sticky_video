@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da5af51a-8919-4e83-9242-a3c4bcd8e2c2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/cv_extend.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv_extend.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/cv_extend1.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv_extend1.js" afterDir="false" />
@@ -31,21 +31,21 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="170" column="24" lean-forward="true" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
+            <state relative-caret-position="735">
+              <caret line="171" column="11" lean-forward="true" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cvsettings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="40" column="13" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="13" />
+            <state relative-caret-position="492">
+              <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -53,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/new/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+            <state relative-caret-position="692">
+              <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -65,17 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cv_extend1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="385" column="16" lean-forward="true" selection-start-line="385" selection-start-column="16" selection-end-line="385" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/cv_extend.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20801" selection-start-column="20801" selection-end-column="20801" />
+            <state relative-caret-position="578">
+              <caret line="717" column="58" lean-forward="true" selection-end-line="750" />
             </state>
           </provider>
         </entry>
@@ -83,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="374" column="26" selection-start-line="374" selection-start-column="26" selection-end-line="374" selection-end-column="26" />
+            <state relative-caret-position="-520">
+              <caret line="485" column="118" selection-start-line="485" selection-start-column="118" selection-end-line="485" selection-end-column="118" />
             </state>
           </provider>
         </entry>
@@ -101,17 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>preResetTransitioning</find>
-      <find>playerHandler</find>
-      <find>resetStickyness</find>
-      <find>getDomVideo</find>
-      <find>childNode</find>
-      <find>videoWapper</find>
-      <find>resetCVWrapper</find>
-      <find>video-position</find>
-      <find>cornerVideoFinalWidth</find>
-      <find>cornerVideoFinalHeight</find>
-      <find>setTimeout</find>
       <find>DOM_closeButton</find>
       <find>DOM_rootOuterContainer</find>
       <find>originalCssPosition</find>
@@ -131,6 +111,17 @@
       <find>__showBtnCls</find>
       <find>clickedClose</find>
       <find>onload</find>
+      <find>grow</find>
+      <find>scale</find>
+      <find>transition-property</find>
+      <find>closeBtn.style.setProperty('opacity'</find>
+      <find>'left</find>
+      <find>slidein</find>
+      <find>__GFontToDataURI</find>
+      <find>- 40</find>
+      <find>currentWindowHeight</find>
+      <find>- 50</find>
+      <find>transition-duration</find>
     </findStrings>
     <replaceStrings>
       <replace>videoWapper</replace>
@@ -150,12 +141,12 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/ss.html" />
         <option value="$PROJECT_DIR$/new/cornervideos.com.html" />
+        <option value="$PROJECT_DIR$/_index.html" />
+        <option value="$PROJECT_DIR$/new/test.html" />
+        <option value="$PROJECT_DIR$/js/cvsettings.js" />
         <option value="$PROJECT_DIR$/js/cv.js" />
         <option value="$PROJECT_DIR$/js/cv_extend1.js" />
-        <option value="$PROJECT_DIR$/js/cvsettings.js" />
         <option value="$PROJECT_DIR$/js/cv_extend.js" />
-        <option value="$PROJECT_DIR$/new/test.html" />
-        <option value="$PROJECT_DIR$/_index.html" />
       </list>
     </option>
   </component>
@@ -238,7 +229,8 @@
       <workItem from="1556431275585" duration="4267000" />
       <workItem from="1556577634820" duration="4615000" />
       <workItem from="1556782395913" duration="588000" />
-      <workItem from="1556859744721" duration="17243000" />
+      <workItem from="1556859744721" duration="17458000" />
+      <workItem from="1556896104745" duration="7614000" />
     </task>
     <task id="LOCAL-00001" summary="width changed">
       <created>1556282486539</created>
@@ -289,11 +281,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556582243854</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="width changed">
+      <created>1556880690104</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556880690104</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66068000" />
+    <option name="totallyTimeSpent" value="73897000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -308,7 +307,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.116204694" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.084754795" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -356,48 +355,55 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new/cv_extend.js" />
-    <entry file="file://$PROJECT_DIR$/js/cv.js">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="374" column="26" selection-start-line="374" selection-start-column="26" selection-end-line="374" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cvsettings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv_extend1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="385" column="16" lean-forward="true" selection-start-line="385" selection-start-column="16" selection-end-line="385" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv_extend.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20801" selection-start-column="20801" selection-end-column="20801" />
+        <state relative-caret-position="20">
+          <caret line="17792" column="17" selection-start-line="17792" selection-start-column="17" selection-end-line="17792" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+        <state relative-caret-position="692">
+          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-520">
+          <caret line="485" column="118" selection-start-line="485" selection-start-column="118" selection-end-line="485" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="170" column="24" lean-forward="true" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
+        <state relative-caret-position="735">
+          <caret line="171" column="11" lean-forward="true" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv_extend1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="717" column="58" lean-forward="true" selection-end-line="750" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv_extend.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22802" selection-start-column="22802" selection-end-column="22802" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cvsettings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
         </state>
       </provider>
     </entry>

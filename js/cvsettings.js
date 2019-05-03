@@ -2,8 +2,8 @@ window.cornerVideo = window.cornerVideo || {};
 window.cornerVideo.params = {
 	"video-width": 400,
 	"video-width-mobile": 150,
-	"video-position": "right",
-	"transition-type": "grow",
+	"video-position": "bottom-right",
+	"transition-type": "slidein",
 	"transition-duration": 2000,
 	"enable-close-button": true,
 	"selecting-method": "auto-select",
@@ -32,13 +32,14 @@ window.cornerVideo.params = {
 	"cta-box-shadow-x": 0,
 	"cta-box-shadow-y": 0,
 	"cta-box-shadow-blur": 16,
+	"cta-close-margin": 4,
 	"cta-box-shadow-color": "#000088",
 	"cta-text": "Buy Now",
 	"cta-url": "https://destinationlink.com",
 	"cta-font-size": 24,
 	"cta-padding": 16,
-	"cta-margin": 23,
-	"cta-font": "Poppins",
+	"cta-margin": 0,
+	"cta-font": "Georgia",
 	"cta-color2": "#0398d3",
 	"cta-target": "new-window"
 };
