@@ -51,6 +51,8 @@
 		videoComputedStyle = null,
 		originalOuterWidth = 0,
 		originalOuterHeight = 0,
+		originalInnerWidth = 0,
+		originalInnerHeight = 0,
 		cornerVideoFinalHeight = 100,
 		cornerVideoVerticalOffset = window.cornerVideo.params['position-vertical-offset' + (isMobileMQ ? '-mobile' : '')],
 		cornerVideoSideOffset = window.cornerVideo.params['position-side-offset' + (isMobileMQ ? '-mobile' : '')],
@@ -578,7 +580,9 @@
 		}
 		if (window.cornerVideo.params["transition-type"] === 'motion' || window.cornerVideo.params["transition-type"] === 'slidein') {
 			setTimeout(function () {
-				DOM_video.style.setProperty('opacity', '1', 'important');
+				DOM_video.style.setProperty('-webkit-transform', 'none', 'important');
+				DOM_video.style.setProperty('-ms-transform', 'none', 'important');
+				DOM_video.style.setProperty('transform', 'none', 'important');
 				DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform, position');
 				DOM_video.style.setProperty('transition-property', 'opacity, transform, position');
 				DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
@@ -603,6 +607,8 @@
 			}
 		}
 		if (DOM_video !== null) {
+			originalInnerWidth = DOM_video.clientWidth;
+			originalInnerHeight = DOM_video.clientHeight;
 			if (clickedClose) {
 				if (closeBtn) closeBtn.style.setProperty('opacity', '0');
 				if (_ctaBtn) _ctaBtn.style.setProperty('opacity', '0');
@@ -619,21 +625,19 @@
 			if ((window.scrollY || window.pageYOffset) === 0) {
 				resetCVWrapper(closeBtn, _ctaBtn);
 			} else {
-				topOffsetTrigger = videoWrapper.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
-				
+				var boundingClientRect = videoWrapper.getBoundingClientRect();
+				topOffsetTrigger = boundingClientRect.top + (window.scrollY || window.pageYOffset);
 				if ((window.scrollY || window.pageYOffset) > topOffsetTrigger && topOffsetTrigger !== 0) {
 					DOM_video.style.transition = 'none';
 					DOM_video.style.border = window.cornerVideo.params['border-width'] + 'px ' + window.cornerVideo.params['border-line'] + ' ' + window.cornerVideo.params['border-color'];
 					DOM_video.style['box-shadow'] = window.cornerVideo.params['box-shadow-x'] + 'px ' + window.cornerVideo.params['box-shadow-y'] + 'px ' + window.cornerVideo.params['box-shadow-blur'] + 'px ' + window.cornerVideo.params['box-shadow-color'];
 					if (window.cornerVideo.params["transition-type"] === 'fade' || window.cornerVideo.params["transition-type"] === 'fadein') {
-						DOM_video.style.setProperty('-webkit-transition-duration', '0s');
-						DOM_video.style.setProperty('transition-duration', '0s');
+							DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
+							DOM_video.style.setProperty('transition-duration', '0s', 'important');
 						if (!showVid) {
 							DOM_video.style.setProperty('opacity', '0');
 							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
 							DOM_video.style.setProperty('transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-							DOM_video.style.setProperty('transition-duration', '0s', 'important');
 							setTimeout(function () {
 								DOM_video.style.setProperty('-webkit-transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
 								DOM_video.style.setProperty('transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
@@ -643,67 +647,113 @@
 							DOM_video.style.setProperty('opacity', '1', 'important');
 							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
 							DOM_video.style.setProperty('transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-							DOM_video.style.setProperty('transition-duration', '0s', 'important');
 						}
 					}
 					if (window.cornerVideo.params["transition-type"] === 'motion' || window.cornerVideo.params["transition-type"] === 'slidein') {
+						DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
+						DOM_video.style.setProperty('transition-duration', '0s', 'important');
 						if (!showVid) {
-							DOM_video.style.setProperty('opacity', '0', 'important');
-							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-							DOM_video.style.setProperty('transition-duration', '0s', 'important');
-							setTimeout(function () {
-								var top = DOM_video.style.getPropertyValue('top');
-								var right = DOM_video.style.getPropertyValue('right');
-								var bottom = DOM_video.style.getPropertyValue('bottom');
-								var left = DOM_video.style.getPropertyValue('left');
-								switch (window.cornerVideo.params["video-position"]) {
-									case 'top':
-									case 'left':
-									case 'top-left':
-										DOM_video.style.setProperty('-webkit-transition-property', 'transform, top, left');
-										DOM_video.style.setProperty('transition-property', 'transform, top, left');
-										break;
-									case 'bottom':
-										DOM_video.style.setProperty('bottom', currentWindowHeight / 2 + 'px');
-										DOM_video.style.setProperty('-webkit-transition-property', 'transform, bottom, left');
-										DOM_video.style.setProperty('transition-property', 'transform, bottom, left');
-										break;
-									case 'middle':
-										DOM_video.style.setProperty('top', '0px');
-										DOM_video.style.setProperty('left', '0px');
-										DOM_video.style.setProperty('-webkit-transition-property', 'transform, top, left');
-										DOM_video.style.setProperty('transition-property', 'transform, top, left');
-										break;
-									case 'right':
-									case 'top-right':
-									case 'bottom-right':
-										DOM_video.style.setProperty('bottom', currentWindowHeight / 2 + 'px');
-										DOM_video.style.setProperty('right', currentWindowWidth / 2 + 'px');
-										DOM_video.style.setProperty('-webkit-transition-property', 'transform, bottom, right');
-										DOM_video.style.setProperty('transition-property', 'transform, bottom, right');
-										break;
+							DOM_video.style.transform =
+								'translate(' + (
+									window.cornerVideo.params['video-position'].indexOf('left') !== -1 ?
+										((originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left) :
+										((originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth)
+								) + 'px, ' + (
+									window.cornerVideo.params['video-position'].indexOf('top') !== -1 ?
+										((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) :
+										((originalInnerHeight - cornerVideoFinalHeight) / 2 + cornerVideoVerticalOffset + boundingClientRect.top + cornerVideoFinalHeight - currentWindowHeight)
+								) + 'px)' +
+								'scale(' + (
+									originalInnerWidth / cornerVideoFinalWidth
+								) + ')';
+							if (window.cornerVideo.params['video-position'].indexOf('top') > -1) {
+								if (window.cornerVideo.params['video-position'].indexOf('left') > -1) {
+									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
+									) + 'px, 0px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									DOM_video.style.setProperty('transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
+									) + 'px, 0px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
+									) + 'px, 0px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+								} else {
+									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
+									) + 'px, 0px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									
+									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
+									) + 'px, 0px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									
+									DOM_video.style.setProperty('transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
+									) + 'px, 0px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
 								}
-								setTimeout(function () {
-									DOM_video.style.setProperty('opacity', '1', 'important');
-									DOM_video.style.setProperty('top', top, 'important');
-									DOM_video.style.setProperty('right', right, 'important');
-									DOM_video.style.setProperty('bottom', bottom, 'important');
-									DOM_video.style.setProperty('left', left, 'important');
-									DOM_video.style.setProperty('transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
-									DOM_video.style.setProperty('-webkit-transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
-								}, Math.round(window.cornerVideo.params["transition-duration"] / 10));
+							} else {
+								if (window.cornerVideo.params['video-position'].indexOf('left') > -1) {
+									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
+									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									DOM_video.style.setProperty('transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
+									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
+									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+								} else {
+									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
+									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									
+									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
+									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+									
+									DOM_video.style.setProperty('transform', 'translate(' + (
+										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
+									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
+										originalInnerWidth / cornerVideoFinalWidth
+									) + ')', 'important');
+								}
+							}
+							setTimeout(function () {
+								DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform, position');
+								DOM_video.style.setProperty('transition-property', 'opacity, transform, position');
+								DOM_video.style.setProperty('-webkit-transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
+								DOM_video.style.setProperty('transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
+								DOM_video.style.setProperty('-ms-transform', 'translate(0px, 0px) scale(1)', 'important');
+								DOM_video.style.setProperty('-webkit-transform', 'translate(0px, 0px) scale(1)', 'important');
+								DOM_video.style.setProperty('transform', 'translate(0px, 0px) scale(1)', 'important');
 							}, 50);
 						} else {
-							setTimeout(function () {
-								DOM_video.style.setProperty('opacity', '1', 'important');
-								DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
-								DOM_video.style.setProperty('transition-property', 'opacity, transform');
-								DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-								DOM_video.style.setProperty('transition-duration', '0s', 'important');
-							}, 50);
+							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
+							DOM_video.style.setProperty('transition-property', 'opacity, transform');
+							DOM_video.style.setProperty('-ms-transform', 'none', 'important');
+							DOM_video.style.setProperty('-webkit-transform', 'none', 'important');
+							DOM_video.style.setProperty('transform', 'none', 'important');
 						}
 					}
 					
