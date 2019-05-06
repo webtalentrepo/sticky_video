@@ -570,26 +570,39 @@
 		}
 		showVid = false;
 		if (window.cornerVideo.params["transition-type"] === 'fade' || window.cornerVideo.params["transition-type"] === 'fadein') {
+			DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform, position');
+			DOM_video.style.setProperty('transition-property', 'opacity, transform, position');
+			DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
+			DOM_video.style.setProperty('transition-duration', '0s', 'important');
 			setTimeout(function () {
 				DOM_video.style.setProperty('opacity', '1', 'important');
-				DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
-				DOM_video.style.setProperty('transition-property', 'opacity, transform');
-				DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-				DOM_video.style.setProperty('transition-duration', '0s', 'important');
-			}, Math.round(window.cornerVideo.params["transition-duration"] / 10));
+			}, 50);
 		}
 		if (window.cornerVideo.params["transition-type"] === 'motion' || window.cornerVideo.params["transition-type"] === 'slidein') {
+			DOM_video.style.setProperty('-webkit-transition', 'top ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s, right ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s, bottom ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s, left ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s');
+			DOM_video.style.setProperty('transition', 'top ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s, right ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s, bottom ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s, left ' + (
+				Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+			) + 's ease 0s');
 			setTimeout(function () {
-				DOM_video.style.setProperty('-webkit-transform', 'none', 'important');
-				DOM_video.style.setProperty('-ms-transform', 'none', 'important');
-				DOM_video.style.setProperty('transform', 'none', 'important');
-				DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform, position');
-				DOM_video.style.setProperty('transition-property', 'opacity, transform, position');
-				DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-				DOM_video.style.setProperty('transition-duration', '0s', 'important');
-				DOM_video.style.setProperty('bottom', '0px', 'important');
+				DOM_video.style.setProperty('top', '0px', 'important');
 				DOM_video.style.setProperty('right', '0px', 'important');
-			}, Math.round(window.cornerVideo.params["transition-duration"] / 10));
+				DOM_video.style.setProperty('bottom', '0px', 'important');
+				DOM_video.style.setProperty('left', '0px', 'important');
+			}, 50);
 		}
 	}
 	
@@ -632,12 +645,12 @@
 					DOM_video.style.border = window.cornerVideo.params['border-width'] + 'px ' + window.cornerVideo.params['border-line'] + ' ' + window.cornerVideo.params['border-color'];
 					DOM_video.style['box-shadow'] = window.cornerVideo.params['box-shadow-x'] + 'px ' + window.cornerVideo.params['box-shadow-y'] + 'px ' + window.cornerVideo.params['box-shadow-blur'] + 'px ' + window.cornerVideo.params['box-shadow-color'];
 					if (window.cornerVideo.params["transition-type"] === 'fade' || window.cornerVideo.params["transition-type"] === 'fadein') {
-							DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-							DOM_video.style.setProperty('transition-duration', '0s', 'important');
+						DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
+						DOM_video.style.setProperty('transition-duration', '0s', 'important');
+						DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
+						DOM_video.style.setProperty('transition-property', 'opacity, transform');
 						if (!showVid) {
 							DOM_video.style.setProperty('opacity', '0');
-							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('transition-property', 'opacity, transform');
 							setTimeout(function () {
 								DOM_video.style.setProperty('-webkit-transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
 								DOM_video.style.setProperty('transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
@@ -645,116 +658,27 @@
 							}, Math.round(window.cornerVideo.params["transition-duration"] / 10));
 						} else {
 							DOM_video.style.setProperty('opacity', '1', 'important');
-							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('transition-property', 'opacity, transform');
 						}
 					}
 					if (window.cornerVideo.params["transition-type"] === 'motion' || window.cornerVideo.params["transition-type"] === 'slidein') {
-						DOM_video.style.setProperty('-webkit-transition-duration', '0s', 'important');
-						DOM_video.style.setProperty('transition-duration', '0s', 'important');
-						if (!showVid) {
-							DOM_video.style.transform =
-								'translate(' + (
-									window.cornerVideo.params['video-position'].indexOf('left') !== -1 ?
-										((originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left) :
-										((originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth)
-								) + 'px, ' + (
-									window.cornerVideo.params['video-position'].indexOf('top') !== -1 ?
-										((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) :
-										((originalInnerHeight - cornerVideoFinalHeight) / 2 + cornerVideoVerticalOffset + boundingClientRect.top + cornerVideoFinalHeight - currentWindowHeight)
-								) + 'px)' +
-								'scale(' + (
-									originalInnerWidth / cornerVideoFinalWidth
-								) + ')';
-							if (window.cornerVideo.params['video-position'].indexOf('top') > -1) {
-								if (window.cornerVideo.params['video-position'].indexOf('left') > -1) {
-									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
-									) + 'px, 0px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									DOM_video.style.setProperty('transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
-									) + 'px, 0px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
-									) + 'px, 0px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-								} else {
-									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
-									) + 'px, 0px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									
-									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
-									) + 'px, 0px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									
-									DOM_video.style.setProperty('transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
-									) + 'px, 0px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-								}
-							} else {
-								if (window.cornerVideo.params['video-position'].indexOf('left') > -1) {
-									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
-									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									DOM_video.style.setProperty('transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
-									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 - cornerVideoSideOffset + boundingClientRect.left
-									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-								} else {
-									DOM_video.style.setProperty('-ms-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
-									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									
-									DOM_video.style.setProperty('-webkit-transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
-									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-									
-									DOM_video.style.setProperty('transform', 'translate(' + (
-										(originalInnerWidth - cornerVideoFinalWidth) / 2 + cornerVideoSideOffset + boundingClientRect.left + cornerVideoFinalWidth - currentWindowWidth
-									) + 'px, ' + ((originalInnerHeight - cornerVideoFinalHeight) / 2 - cornerVideoVerticalOffset + boundingClientRect.top) + 'px) scale(' + (
-										originalInnerWidth / cornerVideoFinalWidth
-									) + ')', 'important');
-								}
-							}
-							setTimeout(function () {
-								DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform, position');
-								DOM_video.style.setProperty('transition-property', 'opacity, transform, position');
-								DOM_video.style.setProperty('-webkit-transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
-								DOM_video.style.setProperty('transition-duration', Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100 + 's');
-								DOM_video.style.setProperty('-ms-transform', 'translate(0px, 0px) scale(1)', 'important');
-								DOM_video.style.setProperty('-webkit-transform', 'translate(0px, 0px) scale(1)', 'important');
-								DOM_video.style.setProperty('transform', 'translate(0px, 0px) scale(1)', 'important');
-							}, 50);
-						} else {
-							DOM_video.style.setProperty('-webkit-transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('transition-property', 'opacity, transform');
-							DOM_video.style.setProperty('-ms-transform', 'none', 'important');
-							DOM_video.style.setProperty('-webkit-transform', 'none', 'important');
-							DOM_video.style.setProperty('transform', 'none', 'important');
-						}
+						DOM_video.style.setProperty('-webkit-transition', 'top ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s, right ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s, bottom ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s, left ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s');
+						DOM_video.style.setProperty('transition', 'top ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s, right ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s, bottom ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s, left ' + (
+							Math.round((window.cornerVideo.params["transition-duration"] / 1000) * 100) / 100
+						) + 's ease 0s');
 					}
 					
 					// Close button setting

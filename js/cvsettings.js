@@ -4,7 +4,7 @@ window.cornerVideo.params = {
 	"video-width-mobile": 150,
 	"video-position": "bottom-right",
 	"transition-type": "slidein",
-	"transition-duration": 2000,
+	"transition-duration": 500,
 	"enable-close-button": true,
 	"selecting-method": "auto-select",
 	"position-vertical-offset": 20,

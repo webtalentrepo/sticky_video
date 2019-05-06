@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="da5af51a-8919-4e83-9242-a3c4bcd8e2c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/cv_extend.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv_extend.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/cv_extend1.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv_extend1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/cvsettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cvsettings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/new/test.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,21 +30,21 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="171" column="11" lean-forward="true" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="11" />
+            <state relative-caret-position="8420">
+              <caret line="171" column="11" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cvsettings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+            <state relative-caret-position="120">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -49,20 +52,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/new/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+            <state relative-caret-position="740">
+              <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cv_extend1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="736" column="158" selection-start-line="736" selection-start-column="158" selection-end-line="736" selection-end-column="158" />
+            <state relative-caret-position="578">
+              <caret line="680" column="41" lean-forward="true" selection-start-line="680" selection-start-column="41" selection-end-line="680" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -71,10 +75,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cv_extend.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="34151" selection-start-column="34151" selection-end-column="34151" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="420" column="59" lean-forward="true" selection-start-line="420" selection-start-column="28" selection-end-line="420" selection-end-column="59" />
+            <state relative-caret-position="468">
+              <caret line="508" selection-start-line="508" selection-end-line="508" />
             </state>
           </provider>
         </entry>
@@ -91,8 +104,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>topOffsetTrigger</find>
-      <find>boundingClientRect</find>
       <find>originalInnerHeight</find>
       <find>placeholderForcedHeight</find>
       <find>placeholderForcedWidth</find>
@@ -114,13 +125,15 @@
       <find>- 50</find>
       <find>san</find>
       <find>originalStyleAttr</find>
-      <find>transition-duration</find>
       <find>__GFontToDataURI</find>
       <find>gfont</find>
       <find>let</find>
       <find>originalInnerWidth</find>
       <find>motion</find>
       <find>slidein</find>
+      <find>transition-duration</find>
+      <find>transition</find>
+      <find>data-sticky-video-state</find>
     </findStrings>
     <replaceStrings>
       <replace>videoWapper</replace>
@@ -145,8 +158,8 @@
         <option value="$PROJECT_DIR$/js/cv.js" />
         <option value="$PROJECT_DIR$/js/cv_extend.js" />
         <option value="$PROJECT_DIR$/new/test.html" />
-        <option value="$PROJECT_DIR$/js/cv_extend1.js" />
         <option value="$PROJECT_DIR$/js/cvsettings.js" />
+        <option value="$PROJECT_DIR$/js/cv_extend1.js" />
       </list>
     </option>
   </component>
@@ -230,7 +243,8 @@
       <workItem from="1556577634820" duration="4615000" />
       <workItem from="1556782395913" duration="588000" />
       <workItem from="1556859744721" duration="17458000" />
-      <workItem from="1556896104745" duration="16307000" />
+      <workItem from="1556896104745" duration="16985000" />
+      <workItem from="1557127434415" duration="3972000" />
     </task>
     <task id="LOCAL-00001" summary="width changed">
       <created>1556282486539</created>
@@ -302,11 +316,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556908006834</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="width changed">
+      <created>1556913685273</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556913685273</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82590000" />
+    <option name="totallyTimeSpent" value="87240000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -321,7 +342,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.084754795" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08528785" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -369,20 +390,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new/cv_extend.js" />
-    <entry file="file://$PROJECT_DIR$/_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="171" column="11" lean-forward="true" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="420" column="59" lean-forward="true" selection-start-line="420" selection-start-column="28" selection-end-line="420" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -390,37 +397,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv_extend.js">
+    <entry file="file://$PROJECT_DIR$/_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35494" selection-start-column="35494" selection-end-column="35494" />
+        <state relative-caret-position="8420">
+          <caret line="171" column="11" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="508" selection-start-line="508" selection-end-line="508" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        <state relative-caret-position="740">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv_extend1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="736" column="158" selection-start-line="736" selection-start-column="158" selection-end-line="736" selection-end-column="158" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cvsettings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        <state relative-caret-position="120">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv_extend.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34151" selection-start-column="34151" selection-end-column="34151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv_extend1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="680" column="41" lean-forward="true" selection-start-line="680" selection-start-column="41" selection-end-line="680" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
