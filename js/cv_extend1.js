@@ -59,6 +59,7 @@
 		originalWidthAttr = '',
 		originalHeightAttr = '',
 		originalStyleAttr = '',
+		isStickyNow = false,
 		clickedClose = false;
 	// window.cornerVideo.params['enable-close-button'] = true;
 	if (window.cornerVideo.params['enable-cta'] === undefined) {
@@ -395,6 +396,58 @@
 			originalOuterWidth = parseInt(videoComputedStyle.getPropertyValue('width'));
 			originalOuterHeight = parseInt(videoComputedStyle.getPropertyValue('height'));
 			cornerVideoFinalHeight = (cornerVideoFinalWidth / originalOuterWidth) * originalOuterHeight;
+			if (isStickyNow) {
+				switch (window.cornerVideo.params["video-position"]) {
+					case 'top':
+						DOM_video.style.setProperty('top', cornerVideoVerticalOffset + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+						break;
+					case 'bottom':
+						DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight - cornerVideoVerticalOffset)) + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+						break;
+					case 'right':
+						DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight) / 2) - 20 + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth - cornerVideoSideOffset)) + 'px', 'important');
+						break;
+					case 'left':
+						DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight) / 2) - 20 + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left', cornerVideoSideOffset + 'px', 'important');
+						break;
+					case 'middle':
+						DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight) / 2) - 20 + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left', Math.round((currentWindowWidth - cornerVideoFinalWidth) / 2) + 'px', 'important');
+						break;
+					case 'top-left':
+					case 'top-right':
+						DOM_video.style.setProperty('top', cornerVideoVerticalOffset + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left',
+							window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ?
+								cornerVideoSideOffset + 'px' : Math.round((currentWindowWidth - cornerVideoFinalWidth - cornerVideoSideOffset)) + 'px', 'important');
+						break;
+					case 'bottom-left':
+					case 'bottom-right':
+						DOM_video.style.setProperty('top', Math.round((currentWindowHeight - cornerVideoFinalHeight - cornerVideoVerticalOffset)) + 'px', 'important');
+						DOM_video.style.setProperty('right', 'auto', 'important');
+						DOM_video.style.setProperty('bottom', 'auto', 'important');
+						DOM_video.style.setProperty('left',
+							window.cornerVideo.params['video-position'].indexOf('-left') !== -1 ?
+								cornerVideoSideOffset + 'px' : Math.round((currentWindowWidth - cornerVideoFinalWidth - cornerVideoSideOffset)) + 'px', 'important');
+						break;
+				}
+			}
 		}
 	};
 	
@@ -538,6 +591,7 @@
 	
 	
 	function resetCVWrapper(closeBtn, _ctaBtn) {
+		isStickyNow = false;
 		DOM_video.style.setProperty('border', '0px', 'important');
 		DOM_video.style.setProperty('box-shadow', 'none', 'important');
 		setTimeout(function () {
@@ -641,6 +695,7 @@
 				var boundingClientRect = videoWrapper.getBoundingClientRect();
 				topOffsetTrigger = boundingClientRect.top + (window.scrollY || window.pageYOffset);
 				if ((window.scrollY || window.pageYOffset) > topOffsetTrigger && topOffsetTrigger !== 0) {
+					isStickyNow = true;
 					DOM_video.style.transition = 'none';
 					DOM_video.style.border = window.cornerVideo.params['border-width'] + 'px ' + window.cornerVideo.params['border-line'] + ' ' + window.cornerVideo.params['border-color'];
 					DOM_video.style['box-shadow'] = window.cornerVideo.params['box-shadow-x'] + 'px ' + window.cornerVideo.params['box-shadow-y'] + 'px ' + window.cornerVideo.params['box-shadow-blur'] + 'px ' + window.cornerVideo.params['box-shadow-color'];
