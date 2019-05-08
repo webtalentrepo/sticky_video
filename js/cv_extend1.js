@@ -608,7 +608,7 @@
 					closeBtn.style.setProperty('opacity', '0', 'important');
 					closeBtn.style.setProperty('position', 'absolute', 'important');
 				}
-			}, Math.round(window.cornerVideo.params["transition-duration"] / 10));
+			}, Math.round(window.cornerVideo.params["transition-duration"]));
 		}
 		if (window.cornerVideo.params['enable-cta'] && _ctaBtn) {
 			_ctaBtn.style.setProperty('opacity', '0', 'important');
@@ -620,7 +620,7 @@
 					_ctaBtn.style.setProperty('opacity', '0', 'important');
 					_ctaBtn.style.setProperty('position', 'absolute', 'important');
 				}
-			}, Math.round(window.cornerVideo.params["transition-duration"] / 10));
+			}, Math.round(window.cornerVideo.params["transition-duration"]));
 		}
 		showVid = false;
 		if (window.cornerVideo.params["transition-type"] === 'fade' || window.cornerVideo.params["transition-type"] === 'fadein') {
@@ -739,18 +739,18 @@
 					// Close button setting
 					if (!showVid && (window.cornerVideo.params["transition-type"] !== 'grow' && window.cornerVideo.params["transition-type"] !== 'scale')) {
 						if (window.cornerVideo.params['enable-close-button'] && closeBtn) {
-							setTimeout(__showBtnCls, window.cornerVideo.params["transition-duration"]);
+							setTimeout(__showBtnCls, window.cornerVideo.params["transition-duration"] + 5000);
 						}
 						if (window.cornerVideo.params['enable-cta'] && _ctaBtn) {
-							setTimeout(__showBtnCta, window.cornerVideo.params["transition-duration"]);
+							setTimeout(__showBtnCta, window.cornerVideo.params["transition-duration"] + 5000);
 						}
 						showVid = true;
 					} else {
 						if (window.cornerVideo.params['enable-close-button'] && closeBtn) {
-							setTimeout(__showBtnCls, 500);
+							setTimeout(__showBtnCls, 5000);
 						}
 						if (window.cornerVideo.params['enable-cta'] && _ctaBtn) {
-							setTimeout(__showBtnCta, 500);
+							setTimeout(__showBtnCta, 5000);
 						}
 					}
 				} else {
